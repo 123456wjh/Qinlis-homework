@@ -8,23 +8,18 @@
     <title>欢迎注册</title>
     <script>
         var json = [{
-            xuehao: 1900000001,
-            number: 012345674567561234,
+            xuehao: '1900000001',
+            number: '012345674567561234',
             username: '张三'
         }, {
-            xuehao: 1900000002,
-            number: 015645674567561234,
+            xuehao: '1900000002',
+            number: '015645674567561234',
             username: '李四'
         }, {
-            xuehao: 1900000003,
-            number: 342345674567561234,
+            xuehao: '1900000003',
+            number: '342345674567561234',
             username: '王五'
         }];
-        var flag = 0;
-        for (var i = 0; i < json.length; i++) {
-            console.log(json[i])
-
-        }
 
 
         function judge() {
@@ -32,10 +27,6 @@
             var xuehao = document.getElementById("xuehao").value;
             var number = document.getElementById("number").value;
             var username = document.getElementById("username").value;
-            console.log(xuehao);
-            console.log(number);
-            console.log(username);
-
             if (xuehao == "") {
                 alert("学号不能为空");
                 return false
@@ -49,12 +40,20 @@
                 return false
             }
 
-            if (xuehao == json[xuehao] && number == json[number] && username == json[username]) {
-                // if (xuehao == json[xuehao].xuehao && number == json[number].number && username == json[username].username)
-                alert("提交成功")
-            } else {
-                alert("数据有误请重新输入")
+            var sum = {
+                username: username,
+                xuehao: xuehao,
+                number: number
             }
+            for (var i = 0; i < json.length; i++) {
+                if (json[i].username == sum.username && json[i].xuehao == sum.xuehao && json[i].number == sum.number) {
+                    alert('数据一致  提交成功');
+                    break
+                } else {
+                    alert('提交数据与后台数据不一致 请重新填写')
+                }
+            }
+
 
 
         }
